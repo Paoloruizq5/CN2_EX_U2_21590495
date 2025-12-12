@@ -1,6 +1,45 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<style>
+    /* Avatar circular */
+    .avatar-instagram {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 3px solid white;
+        object-fit: cover;
+        background: white;
+    }
+
+    /* Tarjeta estilo instagram */
+    .card-instagram {
+        border-radius: 20px;
+        padding: 20px;
+        background: linear-gradient(135deg, #9333ea, #7e22ce, #6d28d9);
+        color: white;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Texto blanco */
+    .card-instagram .title,
+    .card-instagram .subtitle {
+        color: white !important;
+    }
+
+    /* Botones transparentes */
+    .btn-insta {
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: white;
+        backdrop-filter: blur(4px);
+    }
+
+    .btn-insta:hover {
+        background: rgba(255, 255, 255, 0.3);
+    }
+</style>
+
 <div class="section">
     <div class="container">
 
@@ -18,43 +57,44 @@
 
                 <!-- Lista de contactos -->
                 {% for c in contactos %}
-                <div class="box" style="border-radius: 14px; margin-bottom: 20px;">
-                    
+                <div class="card-instagram">
+
                     <div class="media">
 
-                        <div class="media-left">
-                            <figure class="image is-64x64">
-                                <img src="https://icons.veryicon.com/png/o/business/multi-color-financial-and-business-icons/user-139.png"
-                                     alt="Contacto" />
-                            </figure>
+                        <div class="media-left" style="margin-right: 15px;">
+                            <img class="avatar-instagram" 
+                                src="https://icons.veryicon.com/png/o/business/multi-color-financial-and-business-icons/user-139.png"
+                                alt="Contacto">
                         </div>
 
                         <div class="media-content">
                             <p class="title is-4">{{ c.nombre }}</p>
                             <p class="subtitle is-6">
-                                <strong>Email:</strong> {{ c.correo }} <br>
-                                <strong>Tel:</strong> {{ c.telefono }}
+                                <i class="fa-solid fa-envelope"></i> {{ c.correo }} <br>
+                                <i class="fa-solid fa-phone"></i> {{ c.telefono }}
                             </p>
                         </div>
 
                     </div>
 
-                    <hr>
+                    <hr style="background: rgba(255,255,255,0.3);">
 
                     <!-- Acciones -->
                     <div class="buttons is-right">
-                        <a href="{{ url_for('contactos.editar_contacto', id=c.id) }}" 
-                           class="button is-info is-light">
+                        <a href="{{ url_for('contactos.editar_contacto', id=c.id) }}"
+                           class="button btn-insta">
                            <i class="fa-solid fa-pen-to-square"></i>&nbsp;Editar
                         </a>
 
-                        <a href="{{ url_for('contactos.eliminar_contacto', id=c.id) }}" 
-                           class="button is-danger is-light">
+                        <a href="{{ url_for('contactos.eliminar_contacto', id=c.id) }}"
+                           class="button btn-insta">
                            <i class="fa-solid fa-trash"></i>&nbsp;Eliminar
                         </a>
                     </div>
 
                 </div>
+
+                <br>
                 {% endfor %}
 
                 {% if contactos|length == 0 %}
