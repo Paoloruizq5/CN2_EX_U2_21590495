@@ -1,25 +1,80 @@
 <!DOCTYPE html>
-<html class="theme-light" style="background-color: #0d1117;">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Agenda de Contactos</title>
+<html lang="es" class="theme-dark" style="background-color:#1a0f1f;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InstaPro Manager</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
     <script src="https://kit.fontawesome.com/ee9903c79f.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
+    <style>
+        body {
+            background: linear-gradient(135deg, #2b0039, #501280, #ff5f9e);
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+        }
 
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header h1 {
+            color: #ffbbe6;
+            text-shadow: 0 0 12px rgba(255, 150, 210, 0.9);
+            letter-spacing: 4px;
+            font-family: 'Oxanium', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 40px rgba(255, 100, 170, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 50px rgba(255, 100, 170, 0.55);
+        }
+
+        .light-divider {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #ff8ed6, transparent);
+            filter: drop-shadow(0 0 8px #ff8ed6);
+            margin: 20px 0;
+        }
+
+        .container {
+            margin-top: 2rem;
+        }
+    </style>
 </head>
-  <body >
+<body>
     <header>
+        <br>
+        <h1 class="title has-text-centered is-1">
+            InstaPro Manager • Panel Creativo
+        </h1>
+        <div class="light-divider"></div>
         <br>
         <h1 class="title has-text-centered is-1" style="font-family: 'Orbitron', sans-serif; color:white">
             AgendaTec -RevParte 4456
           </h1>
           <br>
     </header>
-    <div class="container">
+
+    <div class="container glass-card">
         {% block content %}{% endblock %}
     </div>
-  </body>
+</body>
 </html>
